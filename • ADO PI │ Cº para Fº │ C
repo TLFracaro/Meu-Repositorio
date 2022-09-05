@@ -1,0 +1,26 @@
+/*================================================================================*/
+/*              TADS - Tecnico em Analise e Desenvolvimento de Sistemas           */
+/*                      Código feito por: Túlio Farias Fracaro                    */ 
+/*        PI - PROJETO INTEGRADOR: DESENVOLVIMENTO ESTRUTURADO DE SISTEMAS        */
+/*================================================================================*/
+
+#include <stdio.h>
+#include <stdlib.h>
+int main(void){
+    for( ; ; ){
+  int C = 0, F = 0;
+    printf("Digite a temperatura em Celsius: ");
+  scanf("%d",&C);
+  if(C >= 30 && C <= 90){
+    F = (C*1.8)+32;
+    printf("A temperatura em Cº é: %d\n", C);
+    printf("A temperatura em Fº é: %d\n", F);
+    printf("\n");
+  } 
+    else{
+    printf("Temperatura inadequada ao processo.\n");
+      printf("\n");
+      }
+    }
+  return 0;
+}
