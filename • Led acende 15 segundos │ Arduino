@@ -1,0 +1,21 @@
+int led = 12;
+int botao = 11;
+  int apertou;
+void setup()
+{
+  pinMode(led, OUTPUT);
+  pinMode(botao, INPUT);
+}
+
+void loop()
+{
+apertou = digitalRead(botao); 
+
+    if (apertou == HIGH){ 
+        digitalWrite(led, HIGH);
+      delay(15000);
+    }
+    else{ 
+        digitalWrite(led, LOW); 
+    }
+}
