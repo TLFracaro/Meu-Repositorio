@@ -15,19 +15,21 @@ public class lotofacil {
 		do {
 			NumSele = Integer.parseInt(JOptionPane.showInputDialog("• Quantos numeros você quer? [15 à 19]: "));
 		} while(NumSele < 15 || NumSele > 19);
-		
 		int QtdNum [][] = new int [QtdJogo][NumSele];
-		for(int i = 0; i < Acertos.length; i++) {
-			Acertos[i] = (int)(Math.random()*25);
-			
-		}
 		for(int i = 0; i < QtdNum.length; i++) {
 			for(int j = 0; j < NumSele; j++) {
-				System.out.print("Digite o numero " +j + ":");
-		         Jogos[i][j]=leitor.nextInt();
+				System.out.print("Digite o numero " +j+ " do "+ i+"º Jogo: ");
+				Jogos[i][j]=leitor.nextInt();
+			}
+		}
+		for(int i = 0; i < Acertos.length; i++) {
+			Acertos[i] = (int)(Math.random()*25);
+			while (i < Acertos.length) {
+				if(Acertos[i]==Acertos.length) {
+					i--;
 				}
 			}
-	
+		}
 	}
 }
 
