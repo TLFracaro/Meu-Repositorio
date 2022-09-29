@@ -47,6 +47,7 @@ public class lotofacil {
 					}
 				}
 			}
+			System.out.println(" ");
 			System.out.println("Numeros acertos no jogo "+i+" foram: "+ NumAcertos);
 		}
 	}
