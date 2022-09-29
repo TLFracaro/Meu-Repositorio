@@ -1,22 +1,20 @@
 import javax.swing.JOptionPane;
 import java.util.Scanner;
-public class LotoFacilJogo {
+public class lotofacil {
 	public static void main(String[] args) {
 		Scanner leitor = new Scanner(System.in);
-
 		System.out.println("============================================================================");
 		System.out.println("                                 LOTO FACIL                                 ");
 		System.out.println("============================================================================");
 		System.out.println(" ");
 		int NumSele = 0;
 		int NumAcertos = 0;
-		int cont = 0;
 		int QtdJogo = Integer.parseInt(JOptionPane.showInputDialog("• Digite quantos jogos você deseja fazer: "));
-		int Jogos [][] = new int [QtdJogo][25];
-		int Acertos [] = new int [NumSele];		
+			
 		do {
 			NumSele = Integer.parseInt(JOptionPane.showInputDialog("• Quantos numeros você quer? [15 à 19]: "));
 		} while(NumSele < 15 || NumSele > 19);
+		int Acertos [] = new int [NumSele];	
 		int QtdNum [][] = new int [QtdJogo][NumSele];
 		int NumJogados [] = new int [NumSele];
 		for(int i = 0; i < QtdNum.length; i++) {
@@ -25,25 +23,14 @@ public class LotoFacilJogo {
 				NumJogados[j]=leitor.nextInt();
 			}
 		}
-		int aux = 0;
-		int j = 0;
 		for(int i = 0; i < Acertos.length; i++) {
 			Acertos[i] = (int)(Math.random()*25);
-			j=0;
-			while(j < Acertos.length){
-				if(Acertos[i] == Acertos[j]) {
-					Acertos[i] = (int)(Math.random()*25);
-				}
-				j++;    
-			}
-		}
-		for(int i = 0; i <Acertos.length; i++) {
-			System.out.print(Acertos[i] + " ");
+			
 		}
 		for(int i = QtdJogo; i <= QtdJogo; i++){
-			for(int j1 = 0; j1 < NumJogados.length; j1++) {
+			for(int j = 0; j < NumJogados.length; j++) {
 				for(int a = 0; a < Acertos.length;a++) {
-					if(NumJogados[j1] == Acertos[a]) {
+					if(NumJogados[j] == Acertos[a]) {
 						NumAcertos++;
 					}
 				}
