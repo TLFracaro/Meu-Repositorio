@@ -1,54 +1,66 @@
-import javax.swing.JOptionPane;
+
+/*Crie um programa que permita ao usuário especificar quantos jogos deseja fazer
+e quantos números em cada jodo da Loto Fácil(1 a 25). Podendo escolher entre 15 
+a 19 números por jogo. Imprima os jogos gerados para o usuário. Implemente uma 
+função que faça sorteio de 15 números e ao final informe quantos pontos o 
+usuário fez em cada jogo. */
+
+import java.util.Random;
 import java.util.Scanner;
-public class lotofacil {
-	public static void main(String[] args) {
-		Scanner leitor = new Scanner(System.in);
-		System.out.println("============================================================================");
-		System.out.println("                                 LOTO FACIL                                 ");
-		System.out.println("============================================================================");
-		System.out.println(" ");
-		int NumSele = 0;
-		int NumAcertos = 0;
+import javax.swing.JOptionPane;
 
-		int QtdJogo = Integer.parseInt(JOptionPane.showInputDialog("• Digite quantos jogos você deseja fazer: "));
+public class LotoFacilTulio {
 
-		do {
-			NumSele = Integer.parseInt(JOptionPane.showInputDialog("• Quantos numeros você quer? [15 à 19]: "));
-		} while(NumSele < 15 || NumSele > 19);
-		int Acertos [] = new int [NumSele];	
-		int QtdNum [][] = new int [QtdJogo][NumSele];
-		int NumJogados [] = new int [NumSele];
-		for(int i = 0; i < QtdNum.length; i++) {
+    public static void main(String[] args) {
+        Scanner leitor = new Scanner(System.in);
+        System.out.println("============================================================================");
+        System.out.println("                                 LOTO FACIL                                 ");
+        System.out.println("============================================================================");
+        System.out.println(" ");
+        int NumSele = 0;
+        int NumAcertos = 0;
 
-			for(int j = 0; j < NumSele; j++) {
-				System.out.print("Digite o numero " +j+ " do "+ i+" Jogo: ");
-				NumJogados[j]=leitor.nextInt();
-				if(NumJogados[j] < 1 || NumJogados[j] >= 25) {
-					System.out.println("Numero Invalido");
-					j--;
-				}
-			}
-		}
-		for(int i = 0; i < Acertos.length; i++) {
-			Acertos[i] = (int)(Math.random()*25);
-		}
-		System.out.println(" ");
-		System.out.println("Numeros soreteados: ");
-		for(int x: Acertos) {
-			System.out.printf("%d ", x);
-		}
-		System.out.println(" ");
-		for(int i = 0; i < QtdJogo; i++){
-			NumAcertos = 0;
-			for(int j = 0; j < NumJogados.length; j++) {
-				for(int a = 0; a < Acertos.length;a++) {
-					if(NumJogados[j] == Acertos[a]) {
-						NumAcertos++;
-					}
-				}
-			}
-			System.out.println(" ");
-			System.out.println("Numeros acertos no jogo "+i+" foram: "+ NumAcertos);
-		}
-	}
+        int QtdJogo = Integer.parseInt(JOptionPane.showInputDialog("• Digite quantos jogos você deseja fazer: "));
+
+        do {
+            NumSele = Integer.parseInt(JOptionPane.showInputDialog("• Quantos numeros você quer? [15 à 19]: "));
+        } while (NumSele < 15 || NumSele > 19);
+        int Acertos[] = new int[NumSele];
+        int QtdNum[][] = new int[QtdJogo][NumSele];
+        int NumJogados[] = new int[NumSele];
+        for (int i = 0; i < QtdNum.length; i++) {
+
+            for (int j = 0; j < NumSele; j++) {
+                System.out.print("Digite o numero " + (j + 1) + " do " + (i + 1) + " Jogo: ");
+                NumJogados[j] = leitor.nextInt();
+                if (NumJogados[j] < 1 || NumJogados[j] >= 25) {
+                    System.out.println("Numero Invalido");
+                    j--;
+                }
+            }
+        }
+
+        Random sorteador = new Random();
+        for (int i = 0; i < Acertos.length; i++) {
+            Acertos[i] = sorteador.nextInt(24) + 1;
+        }
+        System.out.println(" ");
+        System.out.println("Numeros soreteados: ");
+        for (int x : Acertos) {
+            System.out.printf("%d ", x);
+        }
+        System.out.println(" ");
+        for (int i = 0; i < QtdJogo; i++) {
+            NumAcertos = 0;
+            for (int j = 0; j < NumJogados.length; j++) {
+                for (int a = 0; a < Acertos.length; a++) {
+                    if (NumJogados[j] == Acertos[a]) {
+                        NumAcertos++;
+                    }
+                }
+            }
+            System.out.println(" ");
+            System.out.println("Numeros acertos no jogo " + i + " foram: " + NumAcertos);
+        }
+    }
 }
