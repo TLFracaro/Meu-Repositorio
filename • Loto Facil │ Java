@@ -9,8 +9,9 @@ public class lotofacil {
 		System.out.println(" ");
 		int NumSele = 0;
 		int NumAcertos = 0;
+
 		int QtdJogo = Integer.parseInt(JOptionPane.showInputDialog("• Digite quantos jogos você deseja fazer: "));
-			
+
 		do {
 			NumSele = Integer.parseInt(JOptionPane.showInputDialog("• Quantos numeros você quer? [15 à 19]: "));
 		} while(NumSele < 15 || NumSele > 19);
@@ -18,16 +19,27 @@ public class lotofacil {
 		int QtdNum [][] = new int [QtdJogo][NumSele];
 		int NumJogados [] = new int [NumSele];
 		for(int i = 0; i < QtdNum.length; i++) {
+			
 			for(int j = 0; j < NumSele; j++) {
-				System.out.print("Digite o numero " +j+ " do "+ i+"º Jogo: ");
+					System.out.print("Digite o numero " +j+ " do "+ i+" Jogo: ");
 				NumJogados[j]=leitor.nextInt();
+				if(NumJogados[j] < 1 || NumJogados[j] >= 25) {
+					System.out.println("Numero Invalido");
+					j--;
+				}
 			}
 		}
 		for(int i = 0; i < Acertos.length; i++) {
 			Acertos[i] = (int)(Math.random()*25);
-			
 		}
-		for(int i = QtdJogo; i <= QtdJogo; i++){
+		System.out.println(" ");
+		System.out.println("Numeros soreteados: ");
+		for(int x: Acertos) {
+			System.out.printf("%d", x);
+		}
+		System.out.println(" ");
+		for(int i = 0; i < QtdJogo; i++){
+			NumAcertos = 0;
 			for(int j = 0; j < NumJogados.length; j++) {
 				for(int a = 0; a < Acertos.length;a++) {
 					if(NumJogados[j] == Acertos[a]) {
