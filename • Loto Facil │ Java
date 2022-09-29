@@ -1,9 +1,15 @@
+/*=========================================================*/
+/* TADS - Tecnico em Analise e Desenvolvimento de Sistemas */
+/*         Código feito por: Túlio Farias Fracaro          */ 
+/*           APII - Algoritimo de programação II           */
+/*=========================================================*/
 
-/*Crie um programa que permita ao usuário especificar quantos jogos deseja fazer
-e quantos números em cada jodo da Loto Fácil(1 a 25). Podendo escolher entre 15 
-a 19 números por jogo. Imprima os jogos gerados para o usuário. Implemente uma 
-função que faça sorteio de 15 números e ao final informe quantos pontos o 
-usuário fez em cada jogo. */
+/*Crie um programa que permita ao usuário especificar quantos
+jogos deseja fazere quantos números em cada jodo da Loto
+Fácil(1 a 25). Podendo escolher entre 15 a 19 números por 
+jogo. Imprima os jogos gerados para o usuário. Implemente uma 
+função que faça sorteio de 15 números e ao final informe 
+quantos pontos o usuário fez em cada jogo. */
 
 import java.util.Random;
 import java.util.Scanner;
