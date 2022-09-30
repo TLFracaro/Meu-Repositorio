@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px rgb(245, 231, 231);
+}
+
+body {
+    font-family: Arial;
+    padding: 30px;
+    background: #817878;
+    text-align: center;
+}
+
+.header {
+    padding: 50px;
+    text-align: center;
+    background: rgb(236, 230, 230);
+}
+
+.header h1 {
+    font-size: 50px;
+}
+
+.column {
+    float: left;
+    width: 100%;
+}
+
+.card {
+    background-color: rgb(245, 231, 231);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
