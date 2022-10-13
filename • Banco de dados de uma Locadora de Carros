@@ -1,0 +1,78 @@
+/*=========================================================*/
+/* TADS - Tecnico em Analise e Desenvolvimento de Sistemas */
+/*         Código feito por: Túlio Farias Fracaro          */ 
+/*                   BD - BANCO DE DADOS                   */
+/*=========================================================*/
+
+create database Locadora;
+use Locadora;
+create table CLIENTE(
+codcli int primary key auto_increment,
+cpf varchar(11) unique,
+nome varchar(40) not null,
+idade smallint not null,
+municipio varchar(30),
+uf varchar(2)
+);
+
+create table CARRO(
+codcar int primary key auto_increment,
+nomeveiculo varchar(40) not null,
+qtdalugado int not null,
+tipo varchar(20)  not null
+);
+
+create table LOCACAO(
+codloc int primary key auto_increment,
+fk_codcli int,
+foreign key (fk_codcli) references CLIENTE(codcli),
+fk_codcar int,
+foreign key (fk_codcar) references CARRO(codcar),
+hora_loc time,
+data_loc date,
+diaria int,
+valor_loc int not null,
+pacote varchar(30),
+qtdquilometros int
+);
+
+insert into CLIENTE (cpf, nome, idade, municipio, uf) 
+values ("45678921547", "João", 26, "Campinas","SP"),
+       ("1256974863", "Carlos", 30, "São Paulo","SP"),
+       ("65789412358", "Bento", 29, "Barra da tijuca","RJ"),
+       ("34578912547", "Rose", 23, "Rio Preto","MG"),
+       ("75412698745", "Maria", 19, "Santos","SP");
+       
+insert into CARRO (nomeveiculo, qtdalugado, tipo) 
+values ("Corsa",12, "CON"),
+       ("T-Cross",6, "SUV"),
+       ("GTR",3, "Sport"),
+       ("Mobi",16, "SUV"),
+       ("Palio", 24, "CON");
+
+insert into LOCACAO (hora_loc, data_loc, valor_loc, diaria,pacote, qtdquilometros) 
+values ("14:39", "2021/08/04",70, 4,"Econômico", 45),
+       ("14:39", "2021/08/22",70, 8,"Luxo", 60),
+       ("14:39", "2021/08/18",70, 3,"Econômico", 35),
+       ("14:39", "2021/09/02",70, 10,"Luxo", 69),
+       ("14:39", "2021/10/28",70, 15,"Econômico", 25);
+       
+select CLIENTE.*, LOCACAO.data_loc from CLIENTE, LOCACAO;
+
+select ((diaria)*70) as "Saldo do dia" from LOCACAO;
+
+select qtdalugado, tipo from CARRO;
+
+select count(data_loc) as "Quantidade alugadas no mes:" from LOCACAO where data_loc between "2021/08/04" and "2021/08/22";
+
+select nome, municipio from CLIENTE order by nome;
+
+select nomeveiculo,qtdalugado from CARRO;
+
+update LOCACAO set pacote = "Luxo" where codloc = 1;
+
+delete from LOCACAO where codloc = 1;
+
+alter table CLIENTE add column BandeiraCartao varchar(20) not null;
+
+select LOCACAO.data_loc, CLIENTE.nome, CARRO.* from CARRo,CLIENTE,LOCACAO;
